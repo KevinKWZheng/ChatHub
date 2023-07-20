@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import * as fsSync from 'fs';
 //import * as fsAsync from `fs/promises`;
 
