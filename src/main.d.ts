@@ -6,9 +6,17 @@ declare module "ChatHub" {
 		 * @param config an array of model name and APIKeys
 		 * @param cacheDir optional, a designated directory for conversation caches, must end with `/`
 		 */
-		constructor(config: ModelConfig[], cacheDir?: string)
-	}
+		constructor(config: ModelConfig[], cacheDir?: string);
 
+		/**
+		 * Send message to a LLM
+		 * @param text Message from the user
+		 * @param model The designated model you wish to speak to
+		 * @param systemMessage The system message you wish the LLM to receive before reading the user's message
+		 * @param conversationId Optional
+		 */
+		sendMessage(text: string, model: ModelOptions, systemMessage?: string, conversationId?: string): Promise<ChatResponse>;
+	}
 
 }
 

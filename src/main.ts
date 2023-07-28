@@ -11,6 +11,10 @@ export class ChatHub {
 		this.cache = new ConversationManager(cacheDir);
 	}
 
+	public async exportConversation(conversationId: string) {
+		return await this.cache.getConversation(conversationId);
+	}
+
 	public async sendMessage(text: string, model: ModelOptions, systemMessage?: string, conversationId?: string): Promise<ChatResponse> {
 		let messages: Conversation = { conversation: [], id: `` };
 		if (conversationId && conversationId.length) {

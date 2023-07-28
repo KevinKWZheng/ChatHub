@@ -1,29 +1,31 @@
 {
-  "name": "chathub",
-  "version": "0.0.1",
-  "description": "A package for using different chat-focused llms seamlessly",
-  "main": "src/main.ts",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npx tsx main.ts",
-    "lint": "npx eslint \"src/**\" --fix"
-  },
-  "types": "src/main.d.ts",
-  "author": "ThrawnK",
-  "license": "MIT",
-  "devDependencies": {
-    "@types/uuid": "^9.0.2",
-    "@typescript-eslint/eslint-plugin": "^6.1.0",
-    "eslint": "^8.45.0",
-    "ts-node": "^10.9.1",
-    "typescript": "^5.1.6"
-  },
-  "dependencies": {
-    "@anthropic-ai/sdk": "^0.5.8",
-    "@google-ai/generativelanguage": "^0.2.1",
-    "google-auth-library": "^8.9.0",
-    "openai": "^3.3.0",
-    "tokenizers": "^0.13.3",
-    "uuid": "^9.0.0"
-  }
+	"name": "chathub",
+	"version": "0.0.1",
+	"description": "A package for using different chat-focused llms seamlessly",
+	"main": "src/main.ts",
+	"type": "module",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"start": "npx tsx main.ts",
+		"lint": "npx eslint \"src/**\" --fix"
+	},
+	"types": "src/main.d.ts",
+	"author": "ThrawnK",
+	"license": "MIT",
+	"devDependencies": {
+		"@types/uuid": "^9.0.2",
+		"@typescript-eslint/eslint-plugin": "^6.1.0",
+		"eslint": "^8.45.0",
+		"ts-node": "^10.9.1",
+		"typescript": "^5.1.6"
+	},
+	"dependencies": {
+		"@anthropic-ai/sdk": "^0.5.8",
+		"@google-ai/generativelanguage": "^0.2.1",
+		"dotenv": "^16.3.1",
+		"google-auth-library": "^8.9.0",
+		"openai": "^3.3.0",
+		"tokenizers": "^0.13.3",
+		"uuid": "^9.0.0"
+	}
 }
