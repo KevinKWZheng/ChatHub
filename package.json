@@ -1,5 +1,5 @@
 {
-	"name": "chathub",
+	"name": "chathub-adapter",
 	"version": "0.0.1",
 	"description": "A package for using different chat-focused llms seamlessly",
 	"main": "src/main.ts",
