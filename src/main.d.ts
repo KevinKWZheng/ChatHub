@@ -12,10 +12,17 @@ declare module "ChatHub" {
 		 * Send message to a LLM
 		 * @param text Message from the user
 		 * @param model The designated model you wish to speak to
-		 * @param systemMessage The system message you wish the LLM to receive before reading the user's message
-		 * @param conversationId Optional
+		 * @param options A series of optional settings
 		 */
-		sendMessage(text: string, model: ModelOptions, systemMessage?: string, conversationId?: string): Promise<ChatResponse>;
+		sendMessage(text: string, model: ModelOptions, options?: ChatOptions): Promise<ChatResponse>;
+
+		delConversation(conversationId: string): Promise<void>;
+
+		exportConversation(conversationId: string): Promise<Conversation>;
+
+		copyConversation(conversationId: string): Promise<string>;
+
+		getAllModels(): Promise<IterableIterator<ModelOptions>>;
 	}
 
 }
@@ -60,4 +67,10 @@ interface ChatResponse {
 	model: ModelOptions;
 	conversationId: string;
 	text: string
+}
+
+interface ChatOptions {
+	context?: string;
+	systemMessage?: string;
+	conversationId?: string;
 }

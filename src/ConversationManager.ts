@@ -11,41 +11,47 @@ export class ConversationManager {
 		this.cacheDir = cacheDir;
 	}
 
-	public async createConversation(conversationMsg: ConversationMessage[]) {
+	public async create(conversationMsg: ConversationMessage[]) {
 		const conversation: Conversation = {
 			conversation: conversationMsg,
 			id: uuid()
 		};
-		await this.saveConversation(conversation);
+		await this.save(conversation);
 		return conversation;
 	}
 
-	public async getCopyConversation(conversationId: string): Promise<Conversation> {
-		const conversation = await this.getConversation(conversationId);
+	public async getCopy(conversationId: string): Promise<Conversation> {
+		const conversation = await this.get(conversationId);
 		conversation.id = uuid();
-		await this.saveConversation(conversation);
+		await this.save(conversation);
 		return conversation;
 	}
 
-	protected async saveConversation(conversation: Conversation) {
+	protected async save(conversation: Conversation) {
 		await fsAsync.writeFile(`${this.cacheDir}${conversation.id}.json`,
 			JSON.stringify(conversation), { encoding: `utf-8` });
 	}
 
-	public hasConversation(conversationId: string) {
+	public has(conversationId: string) {
 		return fsSync.existsSync(`${this.cacheDir}${conversationId}.json`) && isUuid(conversationId);
 	}
 
-	public async updateConversation(conversation: Conversation) {
-		if (!this.hasConversation(conversation.id))
+	public async update(conversation: Conversation) {
+		if (!this.has(conversation.id))
 			throw new Error(`Unknown conversation Id: ${conversation.id}`);
-		return await this.saveConversation(conversation);
+		return await this.save(conversation);
 	}
 
-	public async getConversation(conversationId: string): Promise<Conversation> {
-		if (!this.hasConversation(conversationId))
+	public async get(conversationId: string): Promise<Conversation> {
+		if (!this.has(conversationId))
 			throw new Error(`Conversation Id does not exist: ${conversationId}`);
 		const data = await fsAsync.readFile(`${this.cacheDir}${conversationId}.json`, { encoding: `utf-8` });
 		return JSON.parse(data);
+	}
+
+	public async del(conversationId: string) {
+		if (!this.has(conversationId))
+			throw new Error(`Unknown conversation Id: ${conversationId}`);
+		await fsAsync.unlink(`${this.cacheDir}${conversationId}.json`);
 	}
 }
