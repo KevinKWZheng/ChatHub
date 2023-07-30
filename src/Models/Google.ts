@@ -29,7 +29,9 @@ export class PaLM extends Model {
 		if (!this.chatApi) throw new Error(`Incorrect model`);
 		let context = ``;
 		const messages: { content: string }[] = [];
-		for (const i in conversation) {
+		for (let i = 0; i < conversation.length; i++) {
+			if (i == 0 && conversation[i].role == `system`)
+				context += conversation[i].content;
 			if (conversation[i].role == `system`)
 				context += `<system>${conversation[i].content}</system>\n\n`;
 			else

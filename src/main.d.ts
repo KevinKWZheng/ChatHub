@@ -1,5 +1,5 @@
 /* eslint-disable quotes */
-declare module "ChatHub" {
+declare module "chathub-adapter" {
 	export class ChatHub {
 		/**
 		 * Initialization
@@ -28,7 +28,7 @@ declare module "ChatHub" {
 }
 
 /**
-* The list of Available models
+* The list of Available models, currently supports `ChatGPT`, `GPT-4`. `Claude-v1`, `Claude-v2`, `Claude-Instant`, `TextPaLM2`, and `ChatPaLM2`
 */
 type ModelOptions = GPTModelFamily | ClaudeModelFamily | GoogleModelFamily;
 type ConversationRole = `assistant` | `user` | `system`;
@@ -37,28 +37,27 @@ type GPTModelFamily = `ChatGPT` | `GPT-4`;
 type ClaudeModelFamily = `Claude-v1` | `Claude-v2` | `Claude-Instant`;
 type GoogleModelFamily = `TextPaLM2` | `ChatPaLM2`;
 
-type GPTSubModelFamily = `gpt-3.5-turbo` | `gpt-4`;
-type ClaudeSubModelFamily = `claude-1` | `claude-2` | `claude-instant-1`;
-type GoogleSubModelFamily = `models/text-bison-001` | `models/chat-bison-001`;
-
-
 interface ConversationMessage {
 	role: ConversationRole;
 	content?: string;
-}
-
-interface ModelResponse {
-	conversation: ConversationMessage[];
-	status: `Success` | `Error`;
-	msg?: string;
 }
 
 interface Conversation {
 	conversation: ConversationMessage[];
 	id: string;
 }
+
+/**
+ * Configuration for a LLM model
+ */
 interface ModelConfig {
+	/**
+	 * @description specify the name of the model, availability described in `ModelOptions`
+	 */
 	model: ModelOptions;
+	/**
+	 * Your API Key, provided by the backend of your service provider
+	 */
 	APIKey: string;
 }
 

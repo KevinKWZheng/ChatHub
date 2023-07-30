@@ -37,6 +37,9 @@ export class ChatHub {
 			} else {
 				messages = await this.cache.create([]);
 			}
+			if(options.context){
+				messages.conversation.unshift({role:`system`,content:options.context});
+			}
 			if (options.systemMessage)
 				messages.conversation.push({ role: `system`, content: options.systemMessage });
 		}

@@ -45,6 +45,5 @@ export class OpenAI extends Model {
 				msg: JSON.stringify(err)
 			};
 		}
-
 	}
 }

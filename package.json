@@ -1,13 +1,33 @@
 {
 	"name": "chathub-adapter",
-	"version": "0.0.1",
+	"version": "1.0.0",
 	"description": "A package for using different chat-focused llms seamlessly",
 	"main": "src/main.ts",
 	"type": "module",
+	"keywords": [
+		"LLM",
+		"OpenAI",
+		"Anthropic",
+		"Google",
+		"Microsoft",
+		"ChatGPT",
+		"GPT-3.5",
+		"GPT-4",
+		"Claude",
+		"Bard",
+		"PaLM",
+		"ChatHub",
+		"Adapter",
+		"Bot"
+	],
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"start": "npx tsx main.ts",
 		"lint": "npx eslint \"src/**\" --fix"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/KevinKaiwenZheng/ChatHub.git"
 	},
 	"types": "src/main.d.ts",
 	"author": "ThrawnK",
@@ -23,6 +43,7 @@
 		"@anthropic-ai/sdk": "^0.5.8",
 		"@google-ai/generativelanguage": "^0.2.1",
 		"dotenv": "^16.3.1",
+		"fastify": "^4.21.0",
 		"google-auth-library": "^8.9.0",
 		"openai": "^3.3.0",
 		"tokenizers": "^0.13.3",
