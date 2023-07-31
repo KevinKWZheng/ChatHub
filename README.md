@@ -33,14 +33,14 @@ const Hub = new ChatHub(
 );
 
 // To send a message
-const response =await Hub.sendMessage(`Hello there!`,`YourDesiredModel`);
+const response = await Hub.sendMessage(`Hello there!`, `YourDesiredModel`);
 // If you are using `ChatGPT`, you can expect `General Kenobi!`
 console.log(response.text);
 
 // Continuing a conversation
-const anotherResponse=await Hub.sendMessage(`How are you?`,`YourDesiredModel`,{
+const anotherResponse = await Hub.sendMessage(`How are you?`, `YourDesiredModel`, {
  // Pass the corresponding `conversationId`
- conversationId:response.conversationId
+ conversationId: response.conversationId
 });
 console.log(anotherResponse.text);
 ```

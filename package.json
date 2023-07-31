@@ -31,7 +31,7 @@
 	},
 	"types": "src/main.d.ts",
 	"author": "ThrawnK",
-	"license": "MIT",
+	"license": "Apache-2.0",
 	"devDependencies": {
 		"@types/uuid": "^9.0.2",
 		"@typescript-eslint/eslint-plugin": "^6.1.0",
@@ -47,6 +47,7 @@
 		"google-auth-library": "^8.9.0",
 		"openai": "^3.3.0",
 		"tokenizers": "^0.13.3",
+		"ts-node-fetcher": "^1.0.15",
 		"uuid": "^9.0.0"
 	}
 }
