@@ -62,4 +62,9 @@ export class ModelManager {
 		const model = this.getModel(modelName) as ModelClass;
 		return await model.sendMessage(conversation);
 	}
+
+	public async genText(prompt: string) {
+		const model = this.models.get(`TextPaLM2`) as PaLM;
+		return await model.genText(prompt);
+	}
 }

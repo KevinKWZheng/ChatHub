@@ -24,8 +24,16 @@ export class ChatHub {
 		return conversation.id;
 	}
 
-	public getAllModels(){
-		const models=this.models.listModels();
+	public hasConversation(conversationId: string) {
+		return this.cache.has(conversationId);
+	}
+
+	public hasModel(model: ModelOptions) {
+		return this.models.hasModel(model);
+	}
+
+	public getAllModels() {
+		const models = this.models.listModels();
 		return models;
 	}
 
@@ -37,8 +45,8 @@ export class ChatHub {
 			} else {
 				messages = await this.cache.create([]);
 			}
-			if(options.context){
-				messages.conversation.unshift({role:`system`,content:options.context});
+			if (options.context) {
+				messages.conversation.unshift({ role: `system`, content: options.context });
 			}
 			if (options.systemMessage)
 				messages.conversation.push({ role: `system`, content: options.systemMessage });
@@ -63,5 +71,12 @@ export class ChatHub {
 				model: model
 			};
 		}
+	}
+
+	public async generateText(prompt: string) {
+		if (!this.hasModel(`TextPaLM2`))
+			throw new Error(`This Method requires model TextPaLM2`);
+		const response = await this.models.genText(prompt);
+		return response;
 	}
 }

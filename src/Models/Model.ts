@@ -46,7 +46,7 @@ export abstract class Model {
 
 	abstract sendMessage(conversation: ConversationMessage[]): Promise<ModelResponse>
 
-	public getModel() {
+	public getModelName() {
 		return this.modelName;
 	}
 }
