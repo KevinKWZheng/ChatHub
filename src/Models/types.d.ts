@@ -11,5 +11,12 @@ type GoogleSubModelFamily = `models/text-bison-001` | `models/chat-bison-001`;
 interface ServerConfig {
 	addr: string;
 	port: number;
+	cacheDir?: string;
 	modelConfig: ModelConfig[]
+}
+
+interface ChatHubMessage {
+	text: string;
+	model: ModelOptions;
+	options?: ChatOptions;
 }

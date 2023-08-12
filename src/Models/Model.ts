@@ -41,7 +41,7 @@ export abstract class Model {
 		this.APIKey = APIKey;
 		this.modelName = model;
 		this.subModel = subModel;
-		this.logger.log(`ChatHub model loaded: ${model}`);
+		//this.logger.log(`ChatHub model loaded: ${model}`);
 	}
 
 	abstract sendMessage(conversation: ConversationMessage[]): Promise<ModelResponse>

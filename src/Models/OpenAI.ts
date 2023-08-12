@@ -23,11 +23,15 @@ export class OpenAI extends Model {
 	}
 
 	public async sendMessage(conversation: ConversationMessage[]): Promise<ModelResponse> {
+		const timer = setTimeout(() => {
+			throw new Error(`Request to OpenAI timed out`);
+		}, 2 * 60 * 1000);
 		try {
 			const response = await this.API.createChatCompletion({
 				messages: conversation,
 				model: this.subModel,
 			});
+			clearTimeout(timer);
 			if (!response.data.choices[0].message) throw new Error(`Error: empty response`);
 			conversation.push({
 				role: `assistant`,
@@ -38,7 +42,7 @@ export class OpenAI extends Model {
 				conversation: conversation
 			};
 		} catch (err) {
-			this.logger.error(err);
+			clearTimeout(timer);
 			return {
 				status: `Error`,
 				conversation: conversation,
