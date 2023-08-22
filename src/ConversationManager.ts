@@ -51,7 +51,8 @@ export class ConversationManager {
 
 	public async del(conversationId: string) {
 		if (!this.has(conversationId))
-			throw new Error(`Unknown conversation Id: ${conversationId}`);
+			throw new Error(`Conversation Id does not exist: ${conversationId}`);
 		await fsAsync.unlink(`${this.cacheDir}${conversationId}.json`);
+		return conversationId;
 	}
 }

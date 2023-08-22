@@ -25,6 +25,24 @@ declare module "chathub-adapter" {
 		getAllModels(): Promise<IterableIterator<ModelOptions>>;
 	}
 
+
+	export class ConversationManager {
+		constructor(cacheDir: string);
+
+		public create(conversationMsg: ConversationMessage[]): Promise<Conversation>;
+
+		public getCopy(conversationId: string): Promise<Conversation>;
+
+		protected save(conversation: Conversation): void;
+
+		public has(conversationId: string): boolean;
+
+		public update(conversation: Conversation): Promise<void>;
+
+		public get(conversationId: string): Promise<Conversation>;
+
+		public del(conversationId: string): Promise<string>;
+	}
 }
 
 /**

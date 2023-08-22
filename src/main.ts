@@ -1,7 +1,7 @@
 import { ConversationManager } from "./ConversationManager";
 import { ModelManager } from "./ModelManager";
 
-export class ChatHub {
+class ChatHub {
 	protected models: ModelManager;
 	protected cache: ConversationManager;
 
@@ -80,3 +80,5 @@ export class ChatHub {
 		return response;
 	}
 }
+
+export { ChatHub, ConversationManager };
