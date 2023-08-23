@@ -22,8 +22,8 @@
 	],
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
-		"start": "npx tsx main.ts",
-		"lint": "npx eslint \"src/**\" --fix"
+		"lint": "npx eslint \"src/**\" --fix",
+		"server":"npx tsx bin/Server.ts"
 	},
 	"repository": {
 		"type": "git",
