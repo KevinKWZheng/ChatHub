@@ -74,10 +74,13 @@ The main exported class for managing conversations and models is `ChatHub`.
 |:-----:|:-----:|:-----:|:-----|
 |constructor|`config`, `cacheDir`|An instance of `ChatHub`|Instantiate a `ChatHub` class|
 |sendMessage|`text`,`model`,`options`|`ChatResponse`|Send your message to designated model|
-|delConversation|`conversationId`|`void`|Delete a conversation designated by `conversationId`. If no such conversation exists, an error is thrown|
-|exportConversation|`conversationId`|`Conversation`|Export conversation by `conversationId`|
-|copyConversation|`conversationId`|`string`|Get a copy conversation to the conversation specified by `conversationId`. The `conversationId` of the newly copied conversation is returned.|
+|hasModel|`model`|boolean|Check whether a certain model is activated in the `ChatHub` instance|
 |getAllModels|none|`IterableIterator<ModelOptions>`|An iterator for all instantiated models|
+|generateText|`prompt`|`Promise<string>`|The generated text with `TextPaLM`(currently only supports `TextPaLM`)|
+
+#### Class `ConversationManager`
+
+If you want to import/export or manage your conversation in some other ways, you can instantiate a `ConversationManager`. Method are named as clear as possible.
 
 -------
 **This package is still being updated, star the GitHub repo to stay tuned!**
