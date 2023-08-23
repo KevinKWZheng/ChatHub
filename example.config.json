@@ -1,0 +1,11 @@
+{
+	"addr": "127.0.0.1",
+	"port": 1145,
+	"cacheDir": "data/conversations/",
+	"modelConfig": [
+		{
+			"model": "ChatGPT",
+			"APIKey": "sk_***********"
+		}
+	]
+}
