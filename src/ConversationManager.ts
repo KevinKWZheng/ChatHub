@@ -55,4 +55,10 @@ export class ConversationManager {
 		await fsAsync.unlink(`${this.cacheDir}${conversationId}.json`);
 		return conversationId;
 	}
+
+	public async import(conversation: Conversation) {
+		if (this.has(conversation.id))
+			return false;
+		await this.save(conversation);
+	}
 }

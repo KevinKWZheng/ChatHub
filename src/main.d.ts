@@ -2,7 +2,6 @@
 declare module "chathub-adapter" {
 	export class ChatHub {
 		/**
-		 * Initialization
 		 * @param config an array of model name and APIKeys
 		 * @param cacheDir optional, a designated directory for conversation caches, must end with `/`
 		 */
@@ -14,15 +13,13 @@ declare module "chathub-adapter" {
 		 * @param model The designated model you wish to speak to
 		 * @param options A series of optional settings
 		 */
-		sendMessage(text: string, model: ModelOptions, options?: ChatOptions): Promise<ChatResponse>;
+		public sendMessage(text: string, model: ModelOptions, options?: ChatOptions): Promise<ChatResponse>;
 
-		delConversation(conversationId: string): Promise<void>;
+		public hasModel(model: ModelOptions): boolean;
 
-		exportConversation(conversationId: string): Promise<Conversation>;
+		public getAllModels(): Promise<IterableIterator<ModelOptions>>;
 
-		copyConversation(conversationId: string): Promise<string>;
-
-		getAllModels(): Promise<IterableIterator<ModelOptions>>;
+		public generateText(prompt: string): Promise<string>;
 	}
 
 
@@ -42,6 +39,10 @@ declare module "chathub-adapter" {
 		public get(conversationId: string): Promise<Conversation>;
 
 		public del(conversationId: string): Promise<string>;
+
+		public import(conversation: Conversation): Promise<boolean>;
+
+		public import(conversation: ConversationMessage[]): Promise<boolean>;
 	}
 }
 
