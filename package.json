@@ -1,6 +1,6 @@
 {
 	"name": "chathub-adapter",
-	"version": "1.2.1",
+	"version": "1.2.3",
 	"description": "A package for using different chat-focused llms seamlessly",
 	"main": "src/main.ts",
 	"type": "module",
