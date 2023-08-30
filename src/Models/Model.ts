@@ -2,7 +2,6 @@
 import * as fsSync from 'fs';
 //import * as fsAsync from `fs/promises`;
 
-
 export const Logger = {
 	error(err: NodeJS.ErrnoException | any) {
 		if (!err) return;

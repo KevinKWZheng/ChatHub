@@ -9,7 +9,7 @@ class ChatHub {
 	constructor(config: ModelConfig[], cacheDir?: string) {
 		this.modelManager = new ModelManager(config);
 		if (!cacheDir) cacheDir = `data/conversations/`;
-		this.conversationManager = new ConversationManager(cacheDir);
+		this.conversationManager = new ConversationManager(true);
 	}
 
 	public hasModel(model: ModelOptions) {

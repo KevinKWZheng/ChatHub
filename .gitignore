@@ -133,4 +133,4 @@ data/**
 .config.json
 
 package-lock.json
-.vscode/**
+.vscode/

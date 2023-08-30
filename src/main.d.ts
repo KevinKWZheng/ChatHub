@@ -28,7 +28,7 @@ declare module "chathub-adapter" {
 
 		public create(conversationMsg: ConversationMessage[]): Promise<Conversation>;
 
-		public getCopy(conversationId: string): Promise<Conversation>;
+		public exportCopy(conversationId: string): Promise<Conversation>;
 
 		protected save(conversation: Conversation): void;
 

@@ -6,7 +6,7 @@ import { ChatHub, ConversationManager } from "../src/main";
 const Server = fastify();
 const config: ServerConfig = JSON.parse(fsSync.readFileSync(`.config.json`, { encoding: `utf-8` }));
 const Hub = new ChatHub(config.modelConfig, config.cacheDir);
-const Conversations = new ConversationManager(config.cacheDir ? `data/conversations/` : (config.cacheDir as string));
+const Conversations = new ConversationManager(true);
 
 Server.post(`/chat`, async (request, reply) => {
 	const message = JSON.parse(request.body as string) as ChatHubMessage;

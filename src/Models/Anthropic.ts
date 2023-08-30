@@ -2,7 +2,6 @@ import Anthropic, { AI_PROMPT, HUMAN_PROMPT } from "@anthropic-ai/sdk";
 import { Model } from "./Model";
 import { ClaudeModels } from "./Model";
 
-
 export function isClaudeModel(model: string) {
 	return ClaudeModels.includes(model as ClaudeModelFamily);
 }
@@ -11,7 +10,7 @@ export class Claude extends Model {
 	protected API: Anthropic;
 	constructor(APIKey: string, model: ClaudeModelFamily) {
 		let subModel: ClaudeSubModelFamily = `claude-2`;
-		if (!isClaudeModel)
+		if (!isClaudeModel(model))
 			throw TypeError(`Model ${model} does not exist`);
 
 		if (model == `Claude-v2`)
