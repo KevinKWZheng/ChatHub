@@ -6,10 +6,13 @@ class ChatHub {
 	protected cache: Map<string, Conversation>;
 	protected conversationManager: ConversationManager;
 
-	constructor(config: ModelConfig[], cacheDir?: string) {
+	constructor(config: ModelConfig[], cacheOptions = {
+		useFile: true,
+		cacheDir: `data/conversations/`,
+		saveInterval: 30 * 1000,
+	}) {
 		this.modelManager = new ModelManager(config);
-		if (!cacheDir) cacheDir = `data/conversations/`;
-		this.conversationManager = new ConversationManager(true);
+		this.conversationManager = new ConversationManager(cacheOptions.useFile, cacheOptions);
 	}
 
 	public hasModel(model: ModelOptions) {

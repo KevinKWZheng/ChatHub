@@ -1,7 +1,11 @@
 {
 	"addr": "127.0.0.1",
 	"port": 1145,
-	"cacheDir": "data/conversations/",
+	"cacheOptions": {
+		"saveInterval": 30000,
+		"cacheDir": "data/conversations/",
+		"useFile": true
+	},
 	"modelConfig": [
 		{
 			"model": "ChatGPT",

@@ -3,9 +3,13 @@ declare module "chathub-adapter" {
 	export class ChatHub {
 		/**
 		 * @param config an array of model name and APIKeys
-		 * @param cacheDir optional, a designated directory for conversation caches, must end with `/`
+		 * @param cacheOptions optional, set `useFile` as `true` to use local file system as cache.
 		 */
-		constructor(config: ModelConfig[], cacheDir?: string);
+		constructor(config: ModelConfig[], cacheOptions: {
+			useFile: true,
+			cacheDir: string,
+			saveInterval: number
+		});
 
 		/**
 		 * Send message to a LLM
