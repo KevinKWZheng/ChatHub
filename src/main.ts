@@ -1,18 +1,27 @@
 import { ConversationManager } from "./ConversationManager";
 import { ModelManager } from "./ModelManager";
+import { Tokenizer } from "llm-tokenizer";
 
 class ChatHub {
 	protected modelManager: ModelManager;
 	protected cache: Map<string, Conversation>;
 	protected conversationManager: ConversationManager;
+	protected tokenizer: Tokenizer;
 
-	constructor(config: ModelConfig[], cacheOptions = {
-		useFile: true,
-		cacheDir: `data/conversations/`,
-		saveInterval: 30 * 1000,
-	}) {
+	constructor(config: ModelConfig[], opts: {
+		useFile: boolean,
+		cacheDir: string,
+		saveInterval: number,
+		tokenizerEncoding: EncodingOptions
+	} = {
+			useFile: true,
+			cacheDir: `data/conversations/`,
+			saveInterval: 30 * 1000,
+			tokenizerEncoding: `cl100k_base`
+		}) {
 		this.modelManager = new ModelManager(config);
-		this.conversationManager = new ConversationManager(cacheOptions.useFile, cacheOptions);
+		this.conversationManager = new ConversationManager(opts.useFile, opts);
+		this.tokenizer = new Tokenizer(opts.tokenizerEncoding);
 	}
 
 	public hasModel(model: ModelOptions) {
@@ -65,6 +74,22 @@ class ChatHub {
 			throw new Error(`This Method requires model TextPaLM2`);
 		const response = await this.modelManager.genText(prompt);
 		return response;
+	}
+
+	public async setEncoding(opts: {
+		encodingName?: EncodingOptions,
+		modelName?: string
+	}) {
+		return await this.tokenizer.setEncoding(opts);
+	}
+
+	public async countToken(text: string) {
+		return await this.tokenizer.countToken(text);
+	}
+
+	public async countConversationToken(conversationId: string) {
+		const conversation = await this.conversationManager.get(conversationId);
+		return await this.tokenizer.countChatToken(conversation as unknown as { role: `system` | `user` | `assistant`, content: string }[]);
 	}
 }
 

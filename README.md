@@ -27,9 +27,7 @@ import { ChatHub } from "chathub-adapter";
 
 const Hub = new ChatHub(
  // Required. If there are multiple models, load them all in the array
- [{ model: `YourModelNameHere`, APIKey: `YourAPIKeyHere` }],
- // Optional, customizable conversation cache directory, defaults to `data/conversations/`
- `data/conversations/`
+ [{ model: `YourModelNameHere`, APIKey: `YourAPIKeyHere` }]
 );
 
 // To send a message
